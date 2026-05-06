@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo{% endblock %}
+
+{% block body %}
+
+<main>
+
+    
+    <div style = "display: flex; flex-direction: row; width: 50%; height: 600px; gap: 40px; margin:60px;">
+
+        <div class = "container-photo">
+
+            <img src="../uploads/photos/{{ (photo.imageName) }}" alt="{{photo.title}}" style = "width : 100%; height: 100%; border-radius: 10px;">
+
+        </div>
+
+        <div class = "container-description"> 
+
+            <h2>{{ (photo.title) }}</h2>
+
+            <div style = "display: flex; flex-direction: row; gap : 10px; align-items:center; padding: 5px;">
+
+                    <div style = "background-color: {{photo.category.color}}; width: 30px; height: 30px; border-radius: 100px;"></div>
+                    <div class="category" style = "background-color: lightgrey; color: black; padding: 10px 20px;">{{photo.category.name}}</div>
+
+                </div>
+
+            <p>{{ (photo.description) }}</p>
+
+            <br>
+
+            <div style = " width: auto; height: 20px; background-color: lightgrey; border-radius: 20px; padding: 10px; margin-right:50px;" ><a href="{{ path('app_main') }}" style = "color : black;"> ← Retour à la galerie </a></div>
+
+        </div>
+
+</main>
+
+
+
+{% endblock %}

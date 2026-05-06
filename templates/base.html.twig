@@ -1,23 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+		{% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+		{% if frankenphpHotReload %}
+			<meta name="frankenphp-hot-reload:url" content="{{ frankenphpHotReload }}">
+			<script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
+			<script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
+		{% endif %}
+	<style>
+		li{
+    		text-decoration:none;
+    		list-style: none;
+		}
 
-        {% block javascripts %}
-        {% endblock %}
+	</style>
+	</head>
 
-        {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphpHotReload %}
-        <meta name="frankenphp-hot-reload:url" content="{{ frankenphpHotReload }}">
-        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
-        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	<body>
+
+		<header>
+
+			<nav class="navbar">
+
+				<div style = "display: flex; flex-direction: row; align-items:center; gap: 50px;">
+					<a href="/" class = "logo">FocusGallery</a>
+						
+					<a href="{{path('app_main')}}">Galerie</a>
+					
+				
+                </div>
+
+					<div style = "display: flex; flex-direction:row; gap : 60px">
+					{% if is_granted('ROLE_ADMIN')%}
+                        
+							<a href="{{path('admin')}}">Admin</a>
+					
+					{% endif %}
+					{% if app.user %}
+						
+							<a href="{{path('app_logout')}}">Se déconnecter</a>
+					
+							{% else %}
+
+						
+							<a href="{{path('app_register')}}">S'inscrire</a>
+						
+								<a href="{{path('app_login')}}">Se connecter</a>
+							
+
+							{% endif %}
+						<div>
+						<a href="/">FR |</a>
+
+						<a href="/">EN</a>
+						</div>
+					</div>
+
+
+		    </nav>
+
+		</header>
+
+{% block body %}{% endblock %}
+
+</body>
 </html>

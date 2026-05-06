@@ -1,0 +1,9 @@
+{% for category in categories %}
+
+	<div class="category" style="background-color: {{category.color}};">
+
+		<a href="{{path('app_main', {'catId': category.id})}}">{{category.name}}</a>
+
+	</div>
+
+{% endfor %}
