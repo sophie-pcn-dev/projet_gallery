@@ -18,7 +18,7 @@
 
             <div style = "background-color: #D1D1D1; width: auto; height: 20px; padding: 15px; border-radius: 40px;">
            
-            <a href="/" style = "color:black;">Tout</a>
+            <a href="/category" style = "color:black;">Tout</a>
     
             </div>
 
@@ -36,7 +36,7 @@
                 <a href="{{ path('app_photo_show', {'id': photo.id}) }}">
                 <div class="photo-card">
 
-                <img src="uploads/photos/{{ (photo.imageName) }}" alt="{{photo.title}}" style = "width : 100%; height: 100%; border-radius: 10px;">
+                <img src="../uploads/photos/{{ (photo.imageName) }}" alt="{{photo.title}}" style = "width : 100%; height: 100%; border-radius: 10px;">
 
                 <div style = "display: flex; flex-direction: row; gap : 50px; align-items:center; padding: 5px; height: 10%;">
 

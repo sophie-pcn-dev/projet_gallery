@@ -13,12 +13,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MainController extends AbstractController
 {
 
-    // #[Route('/', name: 'app_main', methods: ['GET'])]
-    // #[Route('/category/{id}', name: 'app_category', methods: ['GET'])]
-   
+    // #[Route('/', name: 'app_index', methods: ['GET'])]
+    // public function index(PhotoRepository $photoRepository): Response
+    // {
+    //     return $this->render('main/index.html.twig');
+    // }
 
-    #[Route('/{catId}', name: 'app_main', methods: ['GET'])]
-    public function index(PhotoRepository $photoRepository, ?Category $catId = null): Response
+    // #[Route('/category/{id}', name: 'app_category', methods: ['GET'])]
+
+    #[Route('/category/{catId}', name: 'app_main', methods: ['GET'])]
+    public function category(PhotoRepository $photoRepository, ?Category $catId = null): Response
     {
 
         if (!$catId) {
@@ -27,9 +31,9 @@ final class MainController extends AbstractController
             $photos = $catId->getPhotos();
         }
 
-
         return $this->render('main/index.html.twig', [
             'photos' => $photos,
+            
         ]);
     }
     
