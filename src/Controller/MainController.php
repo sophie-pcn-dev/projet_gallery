@@ -21,6 +21,8 @@ final class MainController extends AbstractController
 
     // #[Route('/category/{id}', name: 'app_category', methods: ['GET'])]
 
+    
+    #[Route('/', name: 'app_home', methods: ['GET'])]
     #[Route('/category/{catId}', name: 'app_main', methods: ['GET'])]
     public function category(PhotoRepository $photoRepository, ?Category $catId = null): Response
     {
