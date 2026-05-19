@@ -38,11 +38,11 @@
                 </div>
 
 					<div style = "display: flex; flex-direction:row; gap : 60px">
-					{% if is_granted('ROLE_ADMIN')%}
+					{# {% if is_granted('ROLE_ADMIN')%} #}
                         
 							<a href="{{path('admin')}}">Admin</a>
 					
-					{% endif %}
+					{# {% endif %} #}
 					{% if app.user %}
 						
 							<a href="{{path('app_logout')}}">Se déconnecter</a>
